@@ -1,3 +1,9 @@
+# Read me first
+
+This is a fork of Phashion that we created to allow it to be built successfully on Alpine linux containers. The main version attempts to include a header file that is not present in Alpine and that cannot be gotten from its official repositories (`sys/sysctl.h`). The gem contains in its `ext` folder a gzipped tarball that includes the pHash library that this gem wraps. Inside that library, we have removed the code that depends on the header file. This was a check to see if the computer on which it is running has mulitple cores, so that it can run on these cores concurrently for heavy computations. Since the Phashion gem only relies on a very limited functionality of pHash (i.e. only image comparisons, not sound, video or other multimedia), this does not affect performance for the limited use to which we want to put it (detecting duplicate photos).
+
+The eventual plan is to upgrade our containers to run a more mainstream linux distribution (e.g. Debian), at which stage we can alter the Gemfile to point away from this fork back at the main gem repository.
+
 Phashion
 ========
 [![Build Status](https://travis-ci.org/westonplatter/phashion.svg?branch=tests-travisci)](https://travis-ci.org/westonplatter/phashion)
